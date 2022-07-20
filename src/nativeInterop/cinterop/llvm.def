@@ -1,0 +1,15 @@
+# The list of headers which need Kotlin stubs.
+# Multiple entries are delimited with a newline and backslash.
+# The need to be in the system PATH
+headers = llvm-c/Core.h \ llvm-c/Target.h \ llvm-c/DebugInfo.h
+
+# Filter the headers that are included. Referenced
+# headers are also included; by filtering the allowed
+# headers, system headers like "stdint.h" are not incldued
+headerFilter = llvm-c/**
+
+# Platform-dependent compiler and linker options
+compilerOpts.linux = -I/usr/lib/llvm-10/include -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+#-I/usr/include -I/usr/include/x86_64-linux-gnu
+#linkerOpts.osx = -L/opt/local/lib -L/usr/local/opt/curl/lib -lcurl
+linkerOpts.linux = -L/usr/lib/llvm-10/lib -lLLVM-10

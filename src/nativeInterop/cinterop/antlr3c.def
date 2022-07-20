@@ -1,0 +1,15 @@
+# The list of headers which need Kotlin stubs.
+# Multiple entries are delimited with a newline and backslash.
+# They need to be in the system PATH or configured in the Gradle build script.
+headers = antlr3.h \ KaleLexer.h \ KaleParser.h
+
+# Filter the headers that are included. Referenced
+# headers are also included; by filtering the allowed
+# headers, system headers like "stdint.h" are not incldued
+headerFilter = antlr3*.h Kale*.h
+
+staticLibraries = libkale.a
+libraryPaths = ./grammar/lib
+
+# Platform-dependent compiler and linker options
+linkerOpts.linux = -L/usr/local/lib -lantlr3c
